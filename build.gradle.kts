@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "2.0.0"
     kotlin("plugin.serialization").version("2.0.0")
+    application
 }
 
 group = "com.skliaruk"
@@ -20,6 +21,13 @@ dependencies {
     implementation("com.github.ajalt.clikt:clikt:4.0.0") // for CLI parsing
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0") // for date handling
     implementation("io.ktor:ktor-server-auth:2.3.0")
+}
+application {
+    mainClass.set("com.skliaruk.MainKt")
+}
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
 }
 
 tasks.jar {
